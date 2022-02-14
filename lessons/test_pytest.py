@@ -30,7 +30,7 @@ import pytest
 
 @allure.testcase("https://note.youdao.com/web/#/file/recent/note/WEBf8ee7dd7a2b6752790083f12556381a9/")
 @allure.feature("百度搜索")
-@pytest.mark.parametrize('test_data', ['测试'])
+@pytest.mark.parametrize('test_data', ["allure", "pytest", "unittest"])
 def test_steps_dmeo(test_data):
     driver = webdriver.Chrome()
     with allure.step("打开百度网页"):
@@ -46,8 +46,9 @@ def test_steps_dmeo(test_data):
         driver.save_screenshot(r'D:\pythonProject\hogwarts_test\lessons\PMG\screenshot.png')
         #保存的图片插入allure保存展示
         allure.attach.file(r"D:\pythonProject\hogwarts_test\lessons\PMG\screenshot.png",attachment_type=allure.attachment_type.PNG)
-        #
-        allure.attach('<head></head><boby>首页</boby>''Attach with HTML type',allure.attachment_type.HTML)
+        # 附件 描述
+        allure.attach('<head></head><body>首页</body>','Attach with HTML type', attachment_type=allure.attachment_type.HTML)
+        allure.attach(body="这是一段文本,teardown", name="test文本02", attachment_type=allure.attachment_type.TEXT)
     with allure.step("退出浏览器"):
         driver.quit()
 
