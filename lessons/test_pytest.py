@@ -24,12 +24,9 @@ import time
 import allure
 from selenium import webdriver
 import pytest
-
-
-
-
 @allure.testcase("https://note.youdao.com/web/#/file/recent/note/WEBf8ee7dd7a2b6752790083f12556381a9/")
 @allure.feature("百度搜索")
+
 @pytest.mark.parametrize('test_data', ["allure", "pytest", "unittest"])
 def test_steps_dmeo(test_data):
     driver = webdriver.Chrome()
