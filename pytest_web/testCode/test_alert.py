@@ -8,6 +8,7 @@ from selenium.webdriver.common.by import By
 class TestAlert(Base):
     def test_Alert(self):
         self.driver.get('https://www.runoob.com/try/try.php?filename=jqueryui-api-droppable')
+        sleep(3)
         self.driver.switch_to_frame('iframeResult')
         darp=self.driver.find_element(By.ID,'draggable')
         drop=self.driver.find_element(By.ID,'droppable')

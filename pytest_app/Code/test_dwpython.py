@@ -109,13 +109,14 @@ class TestDW:
         self.driver.find_element(By.XPATH, '//*[@resource-id="com.xueqiu.android:id/login_account"]').send_keys(
             "15388030234")
         self.driver.find_element(By.XPATH, '//*[@resource-id="com.xueqiu.android:id/login_password"]').send_keys(
-            "qq977089471")
+            "qq977089471.")
         WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(
             self.driver.find_element(By.XPATH, '//*[@resource-id="com.xueqiu.android:id/button_next"]')))
         self.driver.find_element(By.XPATH, '//*[@resource-id="com.xueqiu.android:id/button_next"]').click()
         print(self.driver.page_source)
         # print(self.driver.find_element(By.XPATH, "//*[@class='android.view.View']"))
-        self.driver.back()
+        # self.driver.back()
+        sleep(1)
         self.driver.back()
         self.test_quit()
 
@@ -131,8 +132,8 @@ class TestDW:
 
     def test_hamrest(self):
         # assert_that(10, equal_to(1),"这是一个提示")   #比较
-        # assert_that(10, close_to(10,3), "这是一个提示")  # 上下浮动的空间是否包含目标数字
-        assert_that("contains some string", contains_string("string"), "这是一个提示")  # 字符串是否包含 前面那个字符串是都包含后面的字符串数据
+        assert_that(10, close_to(9,3), "这是一个提示")  # 上下浮动的空间是否包含目标数字
+        # assert_that("contains some string", contains_string("string"), "这是一个提示")  # 字符串是否包含 前面那个字符串是都包含后面的字符串数据
 
 
 

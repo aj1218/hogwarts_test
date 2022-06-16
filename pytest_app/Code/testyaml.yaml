@@ -1,0 +1,9 @@
+add :
+  -
+    searchkey: 阿里巴巴
+    type: BABA
+    price: 170
+  -
+    searchkey: xiaomi
+    type: 01810
+    price: 10

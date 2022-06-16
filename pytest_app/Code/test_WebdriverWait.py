@@ -1,41 +1,19 @@
-
-from time import sleep
-
 import pytest
-from appium import webdriver
 from appium.webdriver.common.mobileby import MobileBy
-from appium.webdriver.common.touch_action import TouchAction
-from hamcrest import assert_that, equal_to, close_to, contains_string
+from hamcrest import *
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
 
-class TestWebdriverWait:
+from pytest_app.Code.base import Base
+from pytest_app.Code.load_yaml import YamlHandler
 
-    def setup(self):
-        desired_caps = {
-            "platformName": "Android",
-            "platformVersion": "7.1.2",
-            "deviceName": "127.0.0.1:62001",
-            "appPackage": "com.xueqiu.android",
-            "appActivity": ".view.WelcomeActivityAlias",
-            "noReset": True,
-            # "dontStopAppOnReset": True,  # 不退出App
-            "automationName": "Uiautomator2",
-            "skipDeviceInitialization": True,  # 权限
-            "unicodeKeyboard": True,  # 这个和下面那个 这两个关键字是控制中文的输入的
-            "resetKeyboard": True
-        }
-        self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
-        self.driver.implicitly_wait(10)
+read_data = YamlHandler('../Code/testyaml.yaml').read_yaml()
 
-    def teardown(self):
-        # self.driver.quit()
-        pass
 
-    def test_search(self):
+class TestWebdriverWait(Base):
+
+    @pytest.mark.parametrize('testcase',read_data["add"])
+    def test_search(self,testcase):
         '''
-
         :return:
         1:打开雪球app
         2:点击搜索
@@ -43,6 +21,34 @@ class TestWebdriverWait:
         4:点击第一个搜索结果
         5:判断股票价格
         '''
+        self.driver.find_element(By.ID, "com.xueqiu.android:id/home_search").click()
+        self.driver.find_element(MobileBy.ID,'com.xueqiu.android:id/search_input_text').send_keys(testcase["searchkey"])
+        self.driver.find_element(MobileBy.XPATH,"//*[@resource-id='com.xueqiu.android:id/name']").click()
+        price = float(self.driver.find_element(MobileBy.XPATH,
+                                               f'//*[@text="{testcase["type"]}"]/../../..//*[@resource-id="com.xueqiu.android:id/current_price"]').text)
+        expect_price = testcase["price"]
+        assert_that(price,close_to(expect_price,expect_price*30))
+
+    def test_search1(self):
+        '''
+        :return:
+        1:打开雪球app
+        2:点击搜索
+        3:输入 搜索词 "alibaba" or "xioami"
+        4:点击第一个搜索结果
+        5:判断股票价格
+        '''
+        self.driver.find_element(By.ID, "com.xueqiu.android:id/home_search").click()
+        self.driver.find_element(MobileBy.ID, 'com.xueqiu.android:id/search_input_text').send_keys("xiaomi")
+        self.driver.find_element(MobileBy.XPATH, "//*[@resource-id='com.xueqiu.android:id/name']").click()
+        price = float(self.driver.find_element(MobileBy.XPATH,
+                                               f'//*[@text="01810"]/../../..//*[@resource-id="com.xueqiu.android:id/current_price"]').text)
+        expect_price = 10
+        assert_that(price, close_to(expect_price, expect_price * 30))
+
+
+
+
 
 
 

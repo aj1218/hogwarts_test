@@ -31,7 +31,7 @@ class Addmenber(BasePage):
         #提取出来之后使用死循环遍历数据
         while True:
             #获取 通讯录中的姓名列
-            elements = self.finds(By.CSS_SELECTOR, '.member_colRight_memberTable_td:nth-child(2)')
+            elements = self.finds(By.CSS_SELECTOR, '.member_colRigh t_memberTable_td:nth-child(2)')
             # 使用循环得到每一页的title 也就是姓名的数据
             for element in elements: # 使用判断 如果获取元素组中有传进来的那个元素 直接返回True
                 if value == element.get_attribute("title"):

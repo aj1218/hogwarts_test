@@ -20,6 +20,7 @@ class Main(BasePage):
         self._driver.find_element(By.ID, 'menu_contacts').click()
 
         def wait_add_len(x):
+            # 如果没有找打username元素 就一直去点击 添加成员这个元素 如果知道了 就说明已经添加了添加成员进入了添加成员的页面
             element_len = len(self.finds(By.ID, 'username'))
             if element_len <= 0:
                 # 点击添加成员
