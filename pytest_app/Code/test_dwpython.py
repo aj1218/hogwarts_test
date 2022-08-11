@@ -109,7 +109,7 @@ class TestDW:
         self.driver.find_element(By.XPATH, '//*[@resource-id="com.xueqiu.android:id/login_account"]').send_keys(
             "15388030234")
         self.driver.find_element(By.XPATH, '//*[@resource-id="com.xueqiu.android:id/login_password"]').send_keys(
-            "qq977089471.")
+            "qq977089471..")
         WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(
             self.driver.find_element(By.XPATH, '//*[@resource-id="com.xueqiu.android:id/button_next"]')))
         self.driver.find_element(By.XPATH, '//*[@resource-id="com.xueqiu.android:id/button_next"]').click()
@@ -118,6 +118,7 @@ class TestDW:
         # self.driver.back()
         sleep(1)
         self.driver.back()
+        sleep(1)
         self.test_quit()
 
     def test_quit(self):

@@ -14,7 +14,8 @@ class TestWebdriverWait(Base):
     @pytest.mark.parametrize('testcase',read_data["add"])
     def test_search(self,testcase):
         '''
-        :return:
+        setup是这个方法在运行得时候就会去调用一次 setupclass是在这个类在调用得时候运行一次
+        可以使用不用得setup可以减少运行时间
         1:打开雪球app
         2:点击搜索
         3:输入 搜索词 "alibaba" or "xioami"
@@ -28,6 +29,7 @@ class TestWebdriverWait(Base):
                                                f'//*[@text="{testcase["type"]}"]/../../..//*[@resource-id="com.xueqiu.android:id/current_price"]').text)
         expect_price = testcase["price"]
         assert_that(price,close_to(expect_price,expect_price*30))
+        self.driver.back()
 
     def test_search1(self):
         '''
