@@ -46,14 +46,4 @@ class BasePage:
 
         return element
 
-    def steps(self, path, encoding='utf-8'):
-        with open(path, encoding=encoding) as f:
-            steps = yaml.safe_load(f)
-        element = None
-        for step in steps:
-            if "by" in step.keys():
-                element = self.find(step["by"], step["locator"])
-            if "action" in step.keys():
-                action = step["action"]
-                if action == "click":
-                    element.click()
+

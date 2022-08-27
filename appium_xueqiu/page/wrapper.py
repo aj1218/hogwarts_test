@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 def headle_black(func):
     def wrapper(*args, **kwargs):
         _black_list = [
+            (By.XPATH,"//*[@resource-id='com.xueqiu.android:id/action_search']"),
             (By.ID, "iv_action_back"),
             (By.XPATH, "//*[@text='确认']"),
             (By.XPATH, "//*[@text='下次再说']"),
