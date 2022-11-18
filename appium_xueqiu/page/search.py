@@ -9,18 +9,18 @@ from appium_xueqiu.page.App_base import BasePage
 
 
 class Search(BasePage):
-    def search(self):
-        self.find(By.XPATH, "//*[@resource-id='com.xueqiu.android:id/search_input_text']").send_keys("阿里巴巴")
-        self.find(By.XPATH, "//*[@text='BABA']").click()
-        self.find(By.XPATH,
-                  '//*[contains(@resource-id,"ll_item_container")]//*[@text="阿里巴巴"]/../..//*[@text="加自选"]').click()
+    def search(self, name):
+        self._params["name"] = name
+        self.step(r"D:\pythonProject\hogwarts_test\appium_xueqiu\page\search.yaml")
 
-    def is_choose(self):  # 验证是否被选中
-        eles = self.finds(By.XPATH,
-                          '//*[contains(@resource-id,"ll_item_container")]//*[@text="阿里巴巴"]/../..//*[@text="加自选"]')
+    def add(self, name):
+        self._params["name"] = name
+        self.step(r"D:\pythonProject\hogwarts_test\appium_xueqiu\page\search.yaml")
 
-        return len(eles) > 0  # 如果大于零说明已添加找到了 没有小于零说明没有找到
+    def is_choose(self,name):  # 验证是否被选中
+        self._params["name"] = name
+        return self.step(r"D:\pythonProject\hogwarts_test\appium_xueqiu\page\search.yaml")
 
-
-if __name__ == "__main__":
-    run_code = 0
+    def reset(self, name):
+        self._params["name"] = name
+        return self.step(r"D:\pythonProject\hogwarts_test\appium_xueqiu\page\search.yaml")

@@ -30,7 +30,7 @@ import pytest
 @pytest.mark.parametrize('test_data', ["allure", "pytest", "unittest"])
 def test_steps_dmeo(test_data):
     driver = webdriver.Chrome()
-    with allure.step("打开百度网页"):
+    with allure.step("打开网页"):
         driver.get('http://www.baidu.com')
         driver.maximize_window()
 

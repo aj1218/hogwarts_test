@@ -1,0 +1,5 @@
+allure文件生成
+     pytest .\test_search.py --alluredir=./result
+allure文件在浏览器打开：
+     allure serve ./result
+

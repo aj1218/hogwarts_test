@@ -10,8 +10,8 @@ from appium_xueqiu.page.main import Main
 
 
 class App(BasePage):
-    _package = "com.xueqiu.android"
-    _activity = ".view.WelcomeActivityAlias"
+    _appPackage = "com.xueqiu.android"
+    _appActivity = ".view.WelcomeActivityAlias"
 
     def start(self):
         # 不想每一次都重新初始化这个slef._driver在第二次调用start的时候，进行一个复用
@@ -20,8 +20,8 @@ class App(BasePage):
                 "platformName": "Android",
                 "platformVersion": "7.1.2",
                 "deviceName": "127.0.0.1:62001",
-                "appPackage": self._package,
-                "appActivity": self._activity,
+                "appPackage": self._appPackage,
+                "appActivity": self._appActivity,
                 "noReset": True,  # 不清空数据
                 "dontStopAppOnReset": True,  # 不退出App
                 "automationName": "Uiautomator2",
@@ -30,7 +30,8 @@ class App(BasePage):
                 "resetKeyboard": True
             }
             self._driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
-            self._driver.implicitly_wait(10)
+            # self._driver = webdriver.Remote("http://192.168.56.1:4444/wd/hub", desired_caps)
+            self._driver.implicitly_wait(3)
 
         else:
             self._driver.start_activity(self._package, self._activity)  # 如果有self._driver，直接启动对应的包和activity
@@ -39,6 +40,7 @@ class App(BasePage):
 
     def Main(self) -> Main:
         return Main(self._driver)
+
 
 
 if __name__ == "__main__":

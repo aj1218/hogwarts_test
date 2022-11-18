@@ -1,0 +1,58 @@
+run find
+ args: 
+('xpath', "//*[@resource-id='com.xueqiu.android:id/tab_name' and @text='股票']")
+{}
+run find
+ args: 
+('xpath', "//*[@resource-id='com.xueqiu.android:id/tab_name' and @text='股票']")
+{}
+run find
+ args: 
+('xpath', "//*[@resource-id='com.xueqiu.android:id/title_text' and @text='市场']")
+{}
+run find
+ args: 
+('xpath', "//*[@resource-id='com.xueqiu.android:id/title_text' and @text='市场']")
+{}
+run find
+ args: 
+('id', 'com.xueqiu.android:id/search_input_text')
+{}
+run find
+ args: 
+('id', 'com.xueqiu.android:id/search_input_text')
+{}
+element not found,handle black list
+element not found,handle black list
+run find
+ args: 
+('id', 'com.xueqiu.android:id/search_input_text')
+{}
+run find
+ args: 
+('id', 'com.xueqiu.android:id/search_input_text')
+{}
+run find
+ args: 
+('xpath', '//*[@text="BABA"]')
+{}
+run find
+ args: 
+('xpath', '//*[@text="BABA"]')
+{}
+run find
+ args: 
+('xpath', '//*[contains(@resource-id,"ll_item_container")]//*[@text="阿里巴巴-SW"]/../..//*[@text="已添加"]')
+{}
+run find
+ args: 
+('xpath', '//*[contains(@resource-id,"ll_item_container")]//*[@text="阿里巴巴-SW"]/../..//*[@text="已添加"]')
+{}
+run find
+ args: 
+('xpath', '//*[contains(@resource-id,"ll_item_container")]//*[@text="阿里巴巴-SW"]/../..//*[@text="加自选"]')
+{}
+run find
+ args: 
+('xpath', '//*[contains(@resource-id,"ll_item_container")]//*[@text="阿里巴巴-SW"]/../..//*[@text="加自选"]')
+{}

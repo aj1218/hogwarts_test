@@ -10,7 +10,8 @@ desired_caps = {
     "dontStopAppOnReset":True,  #不退出App
     "skipDeviceInitialization":True  #权限
 }
-driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+# driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+driver = webdriver.Remote("http://192.168.56.1:4444/wd/hub", desired_caps)
 driver.implicitly_wait(10)
 el1 = driver.find_element(By.ID, "com.xueqiu.android:id/home_search").click()
 el2 = driver.find_element(By.ID, "com.xueqiu.android:id/search_input_text").send_keys("alibaba")
@@ -20,3 +21,4 @@ driver.back()
 #                           "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.RelativeLayout[1]").click()
 
 driver.quit()
+

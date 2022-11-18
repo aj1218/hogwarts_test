@@ -20,13 +20,14 @@ class TestDW:
             "appActivity": ".view.WelcomeActivityAlias",
             "noReset": True,
             # "dontStopAppOnReset": True,  # 不退出App
-            "automationName": "Uiautomator2",
-            "skipDeviceInitialization": True,  # 权限
-            "unicodeKeyboard": True,  # 这个和下面那个 这两个关键字是控制中文的输入的
-            "resetKeyboard": True
+            # "automationName": "Uiautomator2",
+            # "skipDeviceInitialization": True,  # 权限
+            # "unicodeKeyboard": True,  # 这个和下面那个 这两个关键字是控制中文的输入的
+            # "resetKeyboard": True
 
         }
-        self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+        # self.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+        self.driver = webdriver.Remote("http://192.168.56.1:4444/wd/hub", desired_caps)
         self.driver.implicitly_wait(10)
 
     def teardown(self):
